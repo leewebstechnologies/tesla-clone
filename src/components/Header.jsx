@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <Container>
       <a href="#">
-        <img src="./images/tesla_logo.png" alt="Tesla Logo" />
+        <img src="./images/logo.svg" alt="Tesla Logo" />
       </a>
       <LeftMenu>
         <a href="#">Model S</a>
