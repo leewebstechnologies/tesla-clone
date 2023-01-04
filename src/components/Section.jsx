@@ -1,18 +1,29 @@
 import React from "react";
 import styled from "styled-components";
+import Fade from "react-reveal/Fade";
 
-const Section = ({ title, description, leftBtnText, rightBtnText, backgroundImg }) => {
+const Section = ({
+  title,
+  description,
+  leftBtnText,
+  rightBtnText,
+  backgroundImg,
+}) => {
   return (
     <Wrap bgImage={backgroundImg}>
-      <ItemText>
-        <h1>{title}</h1>
-        <p>{description}</p>
-      </ItemText>
+      <Fade bottom>
+        <ItemText>
+          <h1>{title}</h1>
+          <p>{description}</p>
+        </ItemText>
+      </Fade>
       <Buttons>
-        <ButtonGroup>
-          <LeftButton>{leftBtnText}</LeftButton>
-          <RightButton>{rightBtnText}</RightButton>
-        </ButtonGroup>
+        <Fade bottom>
+          <ButtonGroup>
+            <LeftButton>{leftBtnText}</LeftButton>
+            {rightBtnText && <RightButton>{rightBtnText}</RightButton>}
+          </ButtonGroup>
+        </Fade>
         <DownArrow src="./images/down-arrow.svg" />
       </Buttons>
     </Wrap>
@@ -22,17 +33,18 @@ const Section = ({ title, description, leftBtnText, rightBtnText, backgroundImg 
 export default Section;
 
 const Wrap = styled.div`
+  z-index: 10;
   width: 100vw;
   height: 100vh;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  /* background-image: url("./images/model-s.jpg"); */
+  background-image: url("./images/model-s.jpg");
   display: flex;
   flex-direction: column;
   justify-content: space-between; //vertical
   align-items: center; //horizontal
-  background-image: ${props => `url("./images/${props.bgImage}")`};
+  background-image: ${(props) => `url("./images/${props.bgImage}")`};
 `;
 
 const ItemText = styled.div`
