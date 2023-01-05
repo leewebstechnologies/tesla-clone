@@ -2,19 +2,26 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import { selectCars } from "../features/car/carSlice";
+import { useSelector } from "react-redux";
+import LanguageIcon from "@mui/icons-material/Language";
 
 const Header = () => {
   const [BurgerStatus, setBurgerStatus] = useState(false);
+  const cars = useSelector(selectCars);
+  // console.log(cars);
   return (
     <Container>
       <a>
         <img src="./images/logo.svg" alt="Tesla Logo" />
       </a>
       <LeftMenu>
-        <a href="#">Model S</a>
-        <a href="#">Model 3</a>
-        <a href="#">Model X</a>
-        <a href="#">Model Y</a>
+        {cars &&
+          cars.map((car, index) => (
+            <a key={index} href="#">
+              {car}
+            </a>
+          ))}
       </LeftMenu>
       <RightMenu>
         <a href="#">Shop</a>
@@ -25,7 +32,6 @@ const Header = () => {
         <CloseWrapper>
           <CustomClose onClick={() => setBurgerStatus(false)} />
         </CloseWrapper>
-
         <li>
           <a href="#">Existing Inventory</a>
         </li>
@@ -33,7 +39,13 @@ const Header = () => {
           <a href="#">Used Inventory</a>
         </li>
         <li>
-          <a href="#">Trade-in</a>
+          <a href="#">Trade-In</a>
+        </li>
+        <li>
+          <a href="#">Demo Drive</a>
+        </li>
+        <li>
+          <a href="#">Insurance</a>
         </li>
         <li>
           <a href="#">Cybertruck</a>
@@ -48,7 +60,30 @@ const Header = () => {
           <a href="#">Charging</a>
         </li>
         <li>
-          <a href="#">Power</a>
+          <a href="#">Powerwall</a>
+        </li>
+        <li>
+          <a href="#">Commercial Energy</a>
+        </li>
+        <li>
+          <a href="#">Utilities</a>
+        </li>
+        <li>
+          <a href="#">Find Us</a>
+        </li>
+        <li>
+          <a href="#">Support</a>
+        </li>
+        <li>
+          <a href="#">Investor Relations</a>
+        </li>
+        <li>
+          <WebIcon />
+          <a href="#">United States</a>
+
+          <a href="#">
+            <span style={{fontSize: "12px", marginLeft: "10px"}}>English</span>
+          </a>
         </li>
       </BurgerNav>
     </Container>
@@ -77,7 +112,7 @@ const LeftMenu = styled.div`
   flex: 1;
   a {
     font-weight: 600;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     padding: 0 10px;
     flex-wrap: nowrap;
   }
@@ -92,7 +127,6 @@ const RightMenu = styled.div`
   align-items: center;
   a {
     font-weight: 600;
-    text-transform: uppercase;
     margin: 10px;
   }
 `;
@@ -133,4 +167,8 @@ const CustomClose = styled(CloseIcon)`
 const CloseWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
+`;
+
+const WebIcon = styled(LanguageIcon)`
+  margin-right: 10px;
 `;
