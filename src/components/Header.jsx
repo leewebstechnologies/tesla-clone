@@ -12,7 +12,7 @@ const Header = () => {
   // console.log(cars);
   return (
     <Container>
-      <a>
+      <a href="#">
         <img src="./images/logo.svg" alt="Tesla Logo" />
       </a>
       <LeftMenu>
@@ -82,7 +82,9 @@ const Header = () => {
           <a href="#">United States</a>
 
           <a href="#">
-            <span style={{fontSize: "12px", marginLeft: "10px"}}>English</span>
+            <span style={{ fontSize: "12px", marginLeft: "10px" }}>
+              English
+            </span>
           </a>
         </li>
       </BurgerNav>
