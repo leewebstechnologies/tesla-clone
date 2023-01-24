@@ -38,6 +38,7 @@ const BottomMenu = styled.div`
   align-items: center;
   justify-content: center;
   flex: 1;
+  z-index: 999;
   a {
     font-weight: 400;
     padding: 0 10px;
